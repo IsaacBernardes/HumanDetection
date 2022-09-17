@@ -16,6 +16,8 @@ def detect_borders(input_path, output_path):
 
     if get_variance(img) > 30:
         equalized_img = cv2.GaussianBlur(equalized_img, (5, 5), sigmaX=0, sigmaY=0)
+    else:
+        equalized_img = cv2.GaussianBlur(equalized_img, (13, 13), sigmaX=0, sigmaY=0)
 
     filter_mask = np.array([[-2, -1, 0], [-1, 8, -1], [0, -1, -2]])
     img_borders = cv2.filter2D(equalized_img, kernel=filter_mask, ddepth=0)
